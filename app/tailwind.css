@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-mssmclr : #E53935;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+@keyframes marquees {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+/* This plain CSS class ensures the animation exists even if Tailwind doesn't generate animate-marquee */
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+.animate-marquees {
+  animation: marquees 55s linear infinite;
+}
+
+@keyframes growWidth {
+  from {width: 0%; }
+  to {width: 25% }
+}
+.grow-line{
+   height: 2px;
+    width: 0%;
+    margin-bottom: 4px;
+  animation: growWidth 1s ease-out forwards;
+}
+
+.hidden-line {
+  width: 0%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-in-out forwards;
+}
+
+.ticker { height: 416px; /* ~3 items (3 * 72px). Adjust to your item height */ }
+
+        /* Track holds duplicated items vertically */
+        .ticker__track {
+          display: flex;
+          flex-direction: column;
+          /* total duration: adjust here (lower = faster) */
+          animation: scroll-up 12s linear infinite;
+        }
+
+        /* Pause on hover */
+        .ticker:hover .ticker__track {
+          animation-play-state: paused;
+        }
+
+        /* Move up by half (we duplicated list) so it loops seamlessly) */
+        @keyframes scroll-up {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        .aos-zoom-fix {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.8s ease-out;
+}
+
+.aos-animate.aos-zoom-fix {
+  opacity: 1;
+  transform: scale(1);
+}
+.management-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  border: 1px solid crimson;
+  background: white;
+  color: crimson;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tabs button.active {
+  background: crimson;
+  color: white;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  animation: fade 0.6s ease-in-out;
+}
+
+.image img {
+  width: 580px;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.text h3 {
+  color: crimson;
+  margin-bottom: 5px;
+}
+
+.text h2 {
+  margin-bottom: 15px;
+}
+
+.text p {
+  line-height: 1.7;
+}
+
+/* Animation */
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
